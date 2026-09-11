@@ -1,0 +1,14 @@
+/* Write your T-SQL query statement below */
+SELECT TOP 1
+id,COUNT(*) AS num
+FROM(
+    SELECT REQUESTER_ID AS id
+    FROM REQUESTACCEPTED
+
+    UNION ALL
+
+    SELECT ACCEPTER_ID  AS id
+    FROM REQUESTACCEPTED
+)  E
+GROUP BY id
+ORDER BY num DESC
